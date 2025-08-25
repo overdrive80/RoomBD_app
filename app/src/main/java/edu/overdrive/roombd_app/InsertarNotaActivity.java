@@ -1,5 +1,7 @@
 package edu.overdrive.roombd_app;
 
+import static edu.overdrive.roombd_app.Constantes.*;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -33,9 +35,10 @@ public class InsertarNotaActivity extends AppCompatActivity {
 
         basedatosNota = BasedatosNota.getInstance(this);
 
-        nota = (Nota) getIntent().getSerializableExtra("nota");
+        nota = (Nota) getIntent().getSerializableExtra(NOTA);
+
         if (nota != null) {
-            getSupportActionBar().setTitle("Editar Nota");
+            //getSupportActionBar().setTitle("Editar Nota");
             update = true;
             btn_Guardar.setText("Actualizar");
 
@@ -50,22 +53,31 @@ public class InsertarNotaActivity extends AppCompatActivity {
             if (update) {
                 nota.setTitulo(titulo);
                 nota.setContenido(contenido);
-                basedatosNota.notaDao().actualizarTodas(nota);
+                BasedatosNota.servicioExecutor.execute(() -> {
+                    basedatosNota.notaDao().actualizarTodas(nota);
 
-                //Volver a la actividad anterior
-                setResult(nota, 2);
+                    //Volver a la actividad anterior
+                    runOnUiThread(() -> {
+                        setResult(nota, RESULT_UPDATED);
+                    });
+                });
+
             } else {
                 nota = new Nota(titulo, contenido);
                 BasedatosNota.servicioExecutor.execute(() -> {
                     long[] ids = basedatosNota.notaDao().insertarTodas(nota);
-                });
 
+                    //Volver a la actividad anterior
+                    runOnUiThread(() -> {
+                        setResult(nota, RESULT_CREATED);
+                    });
+                });
             }
         });
     }
 
     private void setResult(Nota nota, int flag) {
-        setResult(flag, new Intent().putExtra("nota", nota));
+        setResult(flag, new Intent().putExtra(NOTA, nota));
         finish();
 
 

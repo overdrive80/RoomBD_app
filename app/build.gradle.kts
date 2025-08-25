@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "edu.overdrive.roombd_app"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "edu.overdrive.roombd_app"
-        minSdk = 31
-        targetSdk = 36
+        minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

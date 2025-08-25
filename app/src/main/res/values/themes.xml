@@ -1,9 +1,61 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RoomBD_app" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="AppBaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Colores principales de la aplicación -->
+        <item name="colorPrimary">@color/blue_500</item>             <!-- Color primario utilizado en la interfaz -->
+        <item name="colorPrimaryDark">@color/blue_200</item>        <!-- Color más oscuro del primario, usado en elementos como la barra de estado -->
+        <item name="colorAccent">@color/blue_200</item>             <!-- Color de acento utilizado en elementos resaltados -->
+        <item name="colorPrimaryVariant">@color/blue_700</item>     <!-- Variantes del color primario, usadas en temas y componentes -->
+
+        <!-- Colores secundarios -->
+        <item name="colorSecondary">@color/teal_200</item>          <!-- Color secundario utilizado en la interfaz -->
+        <item name="colorSecondaryVariant">@color/teal_700</item>   <!-- Variantes del color secundario, usadas en temas y componentes -->
+
+        <!-- Colores de texto -->
+        <item name="colorOnPrimary">@color/white</item>             <!-- Color del texto sobre fondos primarios -->
+        <item name="colorOnSecondary">@color/white</item>           <!-- Color del texto sobre fondos secundarios -->
+
+        <!-- Configuración de la statusbar y fondo de la ventana -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item> <!-- Color de la barra de estado -->
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:windowBackground">@color/white</item>    <!-- Color de fondo de la ventana principal -->
+
+        <!-- Colores de la toolbar -->
+        <item name="android:textColorPrimary">?attr/colorOnPrimary</item><!-- Titulo -->
+        <item name="android:textColorSecondary">?attr/colorOnPrimary</item><!-- Subtitulo -->
+        <item name="android:colorControlNormal">?attr/colorOnPrimary</item><!-- Iconos -->
+        <item name="android:textColorPrimaryInverse">?attr/colorSecondary</item>
     </style>
 
-    <style name="Theme.RoomBD_app" parent="Base.Theme.RoomBD_app" />
+    <style name="Theme.MiApp" parent="AppBaseTheme">
+        <!-- Estilo específico para la acción de la barra -->
+        <item name="actionBarStyle">@style/ActionBar</item>              <!-- Estilo para la ActionBar -->
+        <item name="android:actionOverflowButtonStyle">@style/OverflowButton</item> <!-- Estilo para el botón de desbordamiento -->
+    </style>
+
+    <style name="ActionBar" parent="Widget.Material3.ActionBar.Solid">
+        <item name="background">?attr/colorPrimary</item>          <!-- Color de fondo de la ActionBar -->
+        <item name="titleTextStyle">@style/ActionBarTexto</item>   <!-- Estilo del texto del título en la ActionBar -->
+        <item name="subtitleTextStyle">@style/ActionBarSubtitulo</item> <!-- Estilo del texto del subtítulo en la ActionBar -->
+    </style>
+
+    <style name="OverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?attr/colorOnPrimary</item>                <!-- Color de tinte del botón de desbordamiento -->
+    </style>
+
+    <style name="ActionBarTexto" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textColor">?attr/colorOnPrimary</item>          <!-- Color del texto del título de la ActionBar -->
+        <item name="android:textStyle">bold</item>                  <!-- Estilo del texto en negrita -->
+    </style>
+
+    <style name="ActionBarSubtitulo" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>          <!-- Color del texto del subtítulo de la ActionBar -->
+        <item name="android:textStyle">italic</item>                <!-- Estilo del texto en cursiva -->
+        <item name="android:textSize">14sp</item>                  <!-- Tamaño del texto del subtítulo -->
+    </style>
+
+    <style name="EstiloTab" parent="Widget.Material3.TabLayout">
+        <item name="android:textSize">20sp</item>                   <!-- Tamaño del texto en las pestañas del TabLayout -->
+    </style>
+
 </resources>
