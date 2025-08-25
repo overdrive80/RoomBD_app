@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RoomBD_app</string>
+    <string name="app_name">Uso API Room</string>
     <string name="guardar">Guardar</string>
     <string name="contenido">Contenido</string>
     <string name="titulo">Titulo</string>
@@ -7,4 +7,5 @@
     <string name="editar_nota">Editar Nota</string>
     <string name="insertar_nota">Añadir Nota</string>
     <string name="borrar">Borrar</string>
+    <string name="campos_vacios">No se guardan las notas con campos vacios</string>
 </resources>

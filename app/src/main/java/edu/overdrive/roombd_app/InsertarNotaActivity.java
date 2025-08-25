@@ -63,6 +63,14 @@ public class InsertarNotaActivity extends AppCompatActivity {
             String titulo = et_titulo.getText().toString();
             String contenido = et_contenido.getText().toString();
 
+            // Campos vacios se anula la acción
+            if (titulo.isEmpty() || contenido.isEmpty()) {
+                setResult(RESULT_CANCELED, new Intent());
+                finish();
+                return;
+            }
+
+            // Opcion modificacion nota
             if (update) {
                 nota.setTitulo(titulo);
                 nota.setContenido(contenido);
@@ -72,10 +80,11 @@ public class InsertarNotaActivity extends AppCompatActivity {
 
                     //Volver a la actividad anterior
                     runOnUiThread(() -> {
-                        setResult(nota, RESULT_UPDATED);
+                        setResult(RESULT_UPDATED, new Intent().putExtra(NOTA, nota));
+                        finish();
                     });
                 });
-
+            //Opcion nota nueva
             } else {
                 nota = new Nota(titulo, contenido);
                 BasedatosNota.servicioExecutor.execute(() -> {
@@ -86,17 +95,11 @@ public class InsertarNotaActivity extends AppCompatActivity {
                     //Volver a la actividad anterior
                     runOnUiThread(() -> {
                          // Asignamos el id dado por Room
-                        setResult(nota, RESULT_CREATED);
+                        setResult(RESULT_CREATED, new Intent().putExtra(NOTA, nota));
+                        finish();
                     });
                 });
             }
         });
-    }
-
-    private void setResult(Nota nota, int flag) {
-        setResult(flag, new Intent().putExtra(NOTA, nota));
-        finish();
-
-
     }
 }

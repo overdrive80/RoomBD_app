@@ -26,7 +26,7 @@ public class Nota implements Serializable {
     @Ignore
     public Nota(){}
 
-    public Nota(String contenido, String titulo) {
+    public Nota(String titulo, String contenido) {
         this.contenido = contenido;
         this.titulo = titulo;
         this.fecha = new Date(System.currentTimeMillis());

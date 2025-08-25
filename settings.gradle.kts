@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RoomBD_app"
+rootProject.name = "Uso API Room"
 include(":app")
  
