@@ -1,0 +1,35 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Android Studio / IntelliJ
+*.iml
+.idea/
+.gradle/
+build/
+
+# Archivos locales
+local.properties
+
+# Archivos de compilación
+.cxx/
+captures/
+outputs/
+.externalNativeBuild/
+
+# Archivos generados de empaquetado
+*.apk
+*.ap_
+*.aab
+
+# Archivos de claves
+*.keystore
+*.jks
+
+# Archivos de Firebase
+google-services.json
+GoogleService-Info.plist
+
+# Archivos de logs
+*.log
+
