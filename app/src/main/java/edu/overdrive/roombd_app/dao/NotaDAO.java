@@ -25,11 +25,14 @@ public interface NotaDAO {
     public List<Nota> getTodas();
 
     @Query("SELECT * FROM " + Constantes.TABLA_NOTAS + " WHERE id_nota = :id_solicitado")
-    public Nota getNota(int id_solicitado);
+    public Nota getNota(long id_solicitado);
 
     //Insercción
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long[] insertarTodas(Nota ... notas);
+    long insertarNota(Nota nota);  // Devuelve el ID generado
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    long[] insertarTodas(Nota ... notas); // Devuelve los IDs generados
 
     //Actualización
     @Update

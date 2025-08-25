@@ -8,6 +8,15 @@
     android:fitsSystemWindows="true"
     tools:context=".InsertarNotaActivity">
 
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
     <Button
         android:id="@+id/btn_guardar"
         android:layout_width="wrap_content"
@@ -50,10 +59,11 @@
         android:padding="16dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         tools:ignore="Autofill">
 
 
