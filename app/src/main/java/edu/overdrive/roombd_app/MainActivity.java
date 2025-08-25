@@ -60,10 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Poblar de datos la lista
         BasedatosNota.servicioExecutor.execute(() -> {
-            listaNotas = basedatosNota.notaDao().getTodas();
+            List<Nota> notasFromDB = basedatosNota.notaDao().getTodas();
 
             // Ahora regresamos al hilo principal para tocar la UI
             runOnUiThread(() -> {
+                // Usar ESTA lista, no crear una nueva
+                listaNotas.clear();
+                listaNotas.addAll(notasFromDB);
+
+
                 AdaptadorNotas.OnNotaClickListener listener = new AdaptadorNotas.OnNotaClickListener() {
                     @Override
                     public void onNotaClick(int position) {
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 };
 
                 adaptadorNotas = new AdaptadorNotas(listaNotas, this, listener);
+                adaptadorNotas.notifyDataSetChanged();
                 recyclerView.setAdapter(adaptadorNotas);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
             });
